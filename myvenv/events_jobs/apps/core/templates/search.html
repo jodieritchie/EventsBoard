@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+
+{%load static %}
+
+{% block content %}
+    <div class="container " id="search-app" >
+        <div class="columns">
+            <!-- class="has-text-centered" -->
+            <div class="column is-12-mobile is-5-tablet is-5-desktop" id="queryBox">
+
+                <h1 class="title">Search</h1>
+                <form @submit.prevent="performSearch()">
+                    <div class="columns" id="searchCol">
+                        <div class="column is-4">
+                            <div class="field">
+                                <label>Find Job</label>
+        
+                                <div class="control" id="searchBox">
+                                    <input type="text" name="query" class="input" v-model="query">
+                                </div>
+                            </div>
+        
+                            <div class="field" >
+                                <label>Company size</label>
+                                <div class="control" >
+                                    <div class="select">
+                                        <select name="company_size" v-model="company_size">
+                                            <option value="" selected>All</option>
+                                            <option value="size_1-20">1-20</option>
+                                            <option value="size_21-100">21-100</option>
+                                            <option value="size_101-999">101-999</option>
+                                            <option value="size_1000+">1000+</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+        
+                            <div class="field">
+                                <div class="control">
+                                    <button class="button is-success" id="register">Search</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+        
+                <div v-if="jobs.length" id="searchResults">
+                    <hr>
+                        <div v-for="job in jobs" :key="job.id" class="notification mt-2 has-text-centered" id="searchResultsBox">
+                            <div class="card-content">
+                            <h3 class="is-size-4" id="searchParam1">[[ job.title ]]</h3>
+                            <p id="searchParam2">[[ job.company_name ]]</p>
+                            <a class="button is-light" :href="job.url" id="viewBtn">View Details</a>
+                        </div>
+                    </div>
+                    
+                </div>
+
+            </div>
+            <div class="column is-12-mobile is-7-tablet is-7-desktop">
+                <div class="searchImg">
+                    <img src="{% static 'images/search.svg' %}" class="pic" id="searchPic" alt="">
+                </div>
+            </div>
+        </div>
+        
+    </div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    const SearchApp = {
+        data() {
+            return {
+                query: '',
+                company_size: '',
+                jobs: []
+            }
+        },
+        delimiters: ['[[', ']]'],
+        methods: {
+            performSearch() {
+                var data = {
+                    'query': this.query,
+                    'company_size': this.company_size
+                }
+
+                fetch('/jobs/api/search/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': '{{ csrf_token }}'
+                    },
+                    body: JSON.stringify(data)
+                })
+                .then((response) => {
+                    return response.json()
+                })
+                .then((result) => {
+                    console.log(result.jobs)
+                    this.jobs = result.jobs
+                })
+                .catch((error) => {
+                    console.log('Error', error)
+                })
+            }
+        }
+    }
+
+    Vue.createApp(SearchApp).mount('#search-app')
+</script>
+{% endblock %}

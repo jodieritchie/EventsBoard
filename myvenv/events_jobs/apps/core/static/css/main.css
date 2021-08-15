@@ -1,0 +1,203 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,500;1,600&display=swap");
+
+:root {
+  --cyan: hsl(171, 100%, 41%);
+  --teal: #069885;
+  --dark_teal: #07917e;
+  --purple: #536dfe;
+  --gradient: linear-gradient(90deg, var(--purple), var(--teal));
+}
+
+* {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  text-transform: capitalize;
+}
+
+/* ::selection {
+  background: var(--pink);
+  color: #fff;
+} */
+
+html {
+  overflow-x: hidden;
+}
+
+body {
+  background: #f9f9f9;
+}
+
+/* Landing page start */
+
+/* replace with section */
+.content {
+  position: relative;
+  width: 100%;
+  min-height: 50vh;
+  padding: 88px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.content .textBox {
+  max-width: 570px;
+}
+
+.content .textBox h2 {
+  color: #333;
+  font-size: 4em;
+  line-height: 1.4em;
+  font-weight: 500;
+}
+
+.content .textBox h2 span {
+  color: var(--teal);
+  font-size: 1.2em;
+  font-weight: 900;
+}
+
+.content .textBox p {
+  color: #333;
+}
+
+.content .textBox a {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 8px 25px;
+  background: var(--dark_teal);
+  color: #fff;
+  border-radius: 40px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-decoration: none;
+}
+
+.content .imgBox {
+  width: 500px;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 50px;
+}
+
+#mobileLinks {
+  text-align: center;
+  font-weight: 400;
+}
+
+#mobileBtns {
+  margin: 0 auto;
+}
+
+@media (max-width: 991px) {
+  .content {
+    margin-top: 10px;
+  }
+  .content .textBox h2 {
+    font-size: 3em;
+    margin-bottom: 15px;
+  }
+  .content .textBox {
+    max-width: 100%;
+    justify-content: center;
+  }
+  .content .imgBox img {
+    max-width: 250px;
+    margin: 0 auto;
+  }
+}
+
+/* Landing page end */
+
+/* Sign up and login start */
+
+/*Buttons*/
+#register {
+  font-weight: 400;
+  background-color: var(--teal);
+  margin-top: 15px;
+}
+
+#titleHeader {
+  font-weight: 600;
+  font-size: 2.5em;
+  color: #333;
+}
+
+#formHeaders {
+  font-weight: 500;
+  font-size: 1.2em;
+  color: #333;
+}
+
+#errorHeader {
+  font-size: 0.9em;
+}
+
+#registerContainer {
+  padding: 40px;
+}
+
+/* Sign up and login end */
+
+/* Search start */
+
+#queryBox {
+  position: relative;
+  max-width: 100%;
+  padding: 88px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#queryBox .title {
+  font-weight: 600;
+  font-size: 2.5em;
+  color: #333;
+}
+
+#searchBox {
+  width: 180px;
+}
+
+#searchResultsBox {
+  text-decoration: none;
+  background-color: #e4e4e4;
+  font-weight: 600;
+  color: #333;
+}
+
+#searchParam1 {
+  font-size: 2.2em;
+}
+
+#searchParam2 {
+  font-size: 1.2em;
+}
+
+#viewBtn {
+  margin-top: 15px;
+}
+
+#searchPic {
+  width: 400px;
+  margin: 0 auto;
+}
+
+@media (max-width: 991px) {
+  #searchPic {
+    width: 300px;
+  }
+}
+/* Search end */
+
+/* Jobs start */
+
+#jobsHeader {
+  margin-top: 30px;
+  margin-bottom: 70px;
+}
+
+/* Jobs end */

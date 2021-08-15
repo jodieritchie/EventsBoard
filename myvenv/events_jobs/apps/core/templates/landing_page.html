@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{%load static %}
+
+{% block content %}
+
+<div class="content">
+    <div class="columns">
+        <div class="column is-12-mobile is-6-tablet is-6-desktop has-text-left">
+            <div class="textBox">
+                <h2>Our Board<br><span>Showcase</span></h2>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatibus ipsa unde neque excepturi quaerat 
+                blanditiis harum perferendis sint ipsum et? Aliquam amet aperiam, commodi itaque iusto suscipit doloremque dolore corporis!
+                </p>
+                <a href="{%url 'login' %}" class="btn">Use Now</a>
+            </div>
+        </div>
+        <div class="column is-12-mobile is-6-tablet is-6-desktop">
+            <div class="imgBox">
+                <img src="{% static 'images/info.svg' %}" class="pic" alt="">
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+{% endblock %}

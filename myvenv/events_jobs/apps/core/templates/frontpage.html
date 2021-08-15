@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{%load static %}
+
+{% block content %}
+
+    <h1 class="title has-text-centered" id="jobsHeader">Job Opportunities</h1>
+    <div class="container">
+        <div class="columns is-multiline">
+            {% for job in jobs %}
+            <div class="column is-4">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="media">
+                            <div class="media-content">
+                                <p class="title is-4 has-text-centered">{{ job.title }} </p>
+                                <p class="subtitle is-6 has-text-centered">{{ job.created_at }}</p>
+                            </div>
+                        </div>
+                        <div class="jobDesc has-text-centered">
+                            {{ job.short_description }}
+                            <hr>
+                            <a href="{% url 'job_detail' job.id %}" class="button has-text-centered">View</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    
+{% endblock %}

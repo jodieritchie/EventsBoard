@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{%load static %}
+
+{% block content %}
+    <div class="container" id="registerContainer">
+        <div class="columns">
+            <div class="column is-12-mobile is-6-tablet is-6-desktop has-text-centered"> <!-- Center  -->
+                <h1 class="title" id="titleHeader" >Sign up</h1>
+                <form method="post" action=".">
+                    {% csrf_token %} <!--built in security-->
+
+                    {% for non_field_error in form.non_field.errors %}
+                        <p class="help is-danger">{{ non_field_error }}</p>
+                    {% endfor %}
+
+                    {% for field in form %}
+                        <div class="field" id="fieldBox">
+                            <label for="{{ field.id_for_label }}" class="label" id="formHeaders">
+                                {{ field.label_tag}}
+                            </label>
+                            {{ field }}
+
+                            {% for error in field.errors %}
+                                <p class="help is-danger" id="errorHeader">{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endfor %}
+                    
+                    <div class="field">
+                        <label id="formHeaders">Account Type:</label>
+                        <div class ="control">
+                            <div class="select">
+                                <select name="account_type">
+                                    <option value="jobseeker" selected>Job seeker</option>
+                                    <option value="employer">Employer</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <div class="control">
+                            <button class="button is-primary" id="register">Sign up</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="column is-12-mobile is-6-tablet is-6-desktop">
+                <img src="{% static 'images/sign.svg' %}" class="pic" alt="">
+            </div>
+        </div>
+    </div>
+{% endblock %}
