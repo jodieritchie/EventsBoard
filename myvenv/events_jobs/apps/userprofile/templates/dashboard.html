@@ -9,12 +9,12 @@
             {% if userprofile.is_employer %}
             <h2 class="subtitle">Jobs</h2>
 
-            <a href="{% url 'add_job' %}" class="button is-success">Add Job</a>
+            <a href="{% url 'add_job' %}" class="button is-info" id="register">Add Job</a>
 
             {% for job in request.user.jobs.all %}
             <!-- Get jobs if any  -->
 
-            <div class="job">
+            <div class="job pt-3">
                 <a href="{% url 'view_dashboard_job' job.id %}">{{job.title}} ({{job.get_status_display}})</a>
             </div>
             {% empty %}

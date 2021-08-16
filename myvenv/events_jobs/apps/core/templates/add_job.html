@@ -42,6 +42,14 @@
             </div>
 
             <div class="field">
+                <label>Job Post</label>
+                <div class="control">
+                    <input class="input" type="text" name="job_post" id="id_job_post" v-model="job_post">
+                </div>
+            </div>
+
+
+            <div class="field">
                 <label>Company name</label>
                 <div class="control">
                     <input class="input" type="text" name="company_name" id="id_company_name" v-model="company_name">
@@ -50,30 +58,9 @@
 
             
             <div class="field">
-                <label>Company address</label>
+                <label>Job address</label>
                 <div class="control">
                     <input class="input" type="text" name="company_address" id="id_company_address">
-                </div>
-            </div>
-
-            <div class="field">
-                <label>Company zipcode</label>
-                <div class="control">
-                    <input class="input" type="text" name="company_zipcode" id="id_company_zipcode">
-                </div>
-            </div>
-
-            <div class="field">
-                <label>Company place</label>
-                <div class="control">
-                    <input class="input" type="text" name="company_place" id="id_company_place">
-                </div>
-            </div>
-
-            <div class="field">
-                <label>Company country</label>
-                <div class="control">
-                    <input class="input" type="text" name="company_country" id="id_company_country">
                 </div>
             </div>
 
@@ -111,6 +98,7 @@
                 title: '',
                 company_name: '',
                 short_description: '',
+                job_post: '',
                 company_size: '',
                 errors: []
             }
@@ -127,6 +115,12 @@
                 }
                 if(this.company_name === ''){
                     this.errors.push('The company name field is missing')
+                }
+                if(this.job_post === ''){
+                    this.errors.push('The job posting field is missing')
+                }
+                if(this.company_size === ''){
+                    this.errors.push('The company size field is missing')
                 }
                 if(this.company_size === ''){
                     this.errors.push('The company size field is missing')

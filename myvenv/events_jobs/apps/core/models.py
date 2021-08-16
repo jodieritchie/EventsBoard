@@ -28,12 +28,10 @@ class Job(models.Model):
     title = models.CharField(max_length=255)
     short_description = models.TextField()
     long_description = models.TextField(blank=True, null=True) #Can be empty
+    job_post=models.CharField(max_length=255, blank=True, null=True)
 
     company_name = models.CharField(max_length=255)
     company_address=models.CharField(max_length=255, blank=True, null=True)
-    company_zipcode=models.CharField(max_length=255, blank=True, null=True)
-    company_place=models.CharField(max_length=255, blank=True, null=True)
-    company_country=models.CharField(max_length=255, blank=True, null=True)
     company_size = models.CharField(max_length=20, choices=CHOICES_SIZE, default=SIZE_1_20)
 
     created_by = models.ForeignKey(User, related_name='jobs', on_delete=models.CASCADE)
@@ -48,7 +46,7 @@ class Job(models.Model):
 
 class Application(models.Model):
     job = models.ForeignKey(Job, related_name='applications', on_delete=models.CASCADE)
-    content = models.TextField()
+    notes = models.TextField()
     experience = models.TextField()
 
     created_by = models.ForeignKey(User, related_name='applications', on_delete=models.CASCADE)

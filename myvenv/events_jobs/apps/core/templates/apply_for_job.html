@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block content %}
-    <h1 class="title">Apply for Job - {{job.title}}</h1>
+    <h1 class="title">Apply to - {{job.title}}</h1>
     <form method="post" action=".">
         {% csrf_token %}
         
@@ -15,24 +17,25 @@
         {% endif %}
 
 
+        <b>Job Posting: </b><a href="#">{{job.job_post}}</a>
         <div class="field">
-            <label>Content</label>
+            <label>Notes</label>
             <div class="control">
-                <textarea class="textarea" name="content" id="id_content"></textarea>
+                <textarea class="textarea" name="notes" id="id_notes"></textarea>
             </div>
         </div>
 
-        <div class="field">
-            <label>Experience</label>
-            <div class="control">
-                <textarea class="textarea" name="experience" id="id_experience"></textarea>
-            </div>
-        </div>
+        <label class="checkbox">
+            <input type="checkbox" required>
+            Applied to Job
+          </label>
 
         <div class="field">
             <div class="control">
-                <button class="button is-success">Submit</button>
+                <button class="button is-info" id="register">Applied</button>
             </div>
         </div>
+
+
     </form>
 {% endblock %}

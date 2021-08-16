@@ -1,11 +1,18 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1 class="title">View application</h1>
-    <h2 class="subtitle">{{ application.job.title }}</h2>
 
-    <small>Date added: {{ application.created_at }}</small>
-    
-    <p><strong>Content: </strong><br> {{ application.content }}</p>
-    <p><strong>Experience: </strong><br> {{ application.experience }}</p>
+<section class="tm-section">
+    <div class="tm-content-container">
+        <div class="tm-content">
+            <h1 class="title">View application</h1>
+            <h2 class="subtitle">{{ application.job.title }}</h2>
+
+            <small>Date added: {{ application.created_at }}</small>
+            
+            <p><strong>Notes: </strong><br> {{ application.notes }}</p>
+        </div>
+    </div>
+</section>
+
 {% endblock %}
