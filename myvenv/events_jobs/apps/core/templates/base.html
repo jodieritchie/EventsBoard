@@ -1,5 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,8 +8,12 @@
     <title>MLH Project</title>
     <!--Styles-->
     <link rel="stylesheet" type="text/css" href="{% static '/css/main.css' %}">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css"
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" />
+    <link rel="stylesheet" href="{% static '/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static '/css/style.css' %}">
 </head>
+
 <body>
     <!--Navbar-->
     <nav class="navbar has-shadow is-white" role="navigation" aria-label="main navigation">
@@ -25,9 +30,9 @@
             <div class="navbar-start">
 
                 {% if request.user.is_authenticated %}
-                    <a href="{% url 'search' %}" class="navbar-item" id="mobileLinks">Search</a>
-                    <a href="{% url 'frontpage' %}" class="navbar-item" id="mobileLinks">Jobs</a>
-                    <a href="{% url 'dashboard' %}" class="navbar-item" id="mobileLinks">Dashboard</a>
+                <a href="{% url 'search' %}" class="navbar-item" id="mobileLinks">Search</a>
+                <a href="{% url 'frontpage' %}" class="navbar-item" id="mobileLinks">Jobs</a>
+                <a href="{% url 'dashboard' %}" class="navbar-item" id="mobileLinks">Dashboard</a>
                 {% endif %}
             </div>
             <div class="navbar-end">
@@ -36,7 +41,8 @@
                         {% if request.user.is_authenticated %}
                         <a href="{%url 'logout' %}" id="mobileBtns" class="button is-light"><strong>Log out</strong></a>
                         {% else %}
-                        <a href="{%url 'signup' %}" id="mobileBtns" class="button is-primary"><strong>Sign up</strong></a>
+                        <a href="{%url 'signup' %}" id="mobileBtns" class="button is-primary"><strong>Sign
+                                up</strong></a>
                         <a href="{%url 'login' %}" id="mobileBtns" class="button is-light"><strong>Log in</strong></a>
                         {% endif %}
                     </div>
@@ -45,7 +51,7 @@
         </div>
     </nav>
     <!--Navbar End-->
-    
+
     <!--Main Content-->
     <section class="section">
         {% block content %}
@@ -57,13 +63,14 @@
     <script src="https://unpkg.com/vue@next"></script>
 
     <script>
-    // mobile menu 
-    const burgerIcon = document.querySelector('#burger')
-    const navbarMenu = document.querySelector('#nav-links')
-    burgerIcon.addEventListener('click', () => navbarMenu.classList.toggle('is-active'))
+        // mobile menu 
+        const burgerIcon = document.querySelector('#burger')
+        const navbarMenu = document.querySelector('#nav-links')
+        burgerIcon.addEventListener('click', () => navbarMenu.classList.toggle('is-active'))
     </script>
     {% block scripts %}
     {% endblock %}
-    
+
 </body>
+
 </html>
