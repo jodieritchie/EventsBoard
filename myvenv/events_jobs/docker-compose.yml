@@ -1,0 +1,35 @@
+version: "3.8"
+services:
+    web:
+        build: .
+        volumes:
+            - .:/eventjobs
+        ports:
+            - 8000:8000
+        env_file:
+            - .env
+        restart: always
+        image: web:eventjobs
+        container_name: eventjobs_container
+        command: python manage.py runserver 0.0.0.0:8000
+
+
+    nginx:
+        container_name: nginx-django
+        image: jonasal/nginx-certbot:latest
+        restart: unless-stopped
+        env_file:
+            - ./nginx-certbot.env
+        ports:
+            - 80:80
+            - 443:443
+        volumes:
+            - nginx_secrets:/etc/letsencrypt
+            - ./user_conf.d:/etc/nginx/user_conf.d
+        volumes_from: 
+            - web
+        depends_on: 
+            - web
+
+volumes:
+    nginx_secrets:
