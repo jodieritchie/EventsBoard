@@ -1,4 +1,4 @@
-# Glassjobs
+# Glassjobs 💻
 
 This application helps with the job search process for candidates. It also helps employers advertise roles to seek for eligible candidates they could also hire as employees
 
